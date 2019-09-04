@@ -16,9 +16,7 @@ export interface PeriodicElement {
 })
 export class HomeComponent implements OnInit {
 
-  ELEMENT_DATA: PeriodicElement[] = [
-    {position: 1, contact: 'Hydrogen', code: 'code', result: 'H'}
-  ];
+  ELEMENT_DATA: PeriodicElement[] = [];
 
   displayedColumns: string[] = ['position', 'contact', 'code', 'result'];
   dataSource = this.ELEMENT_DATA;
@@ -26,14 +24,13 @@ export class HomeComponent implements OnInit {
   findParams = [{
     email: "",
     password: ""
-  }]
+  }];
 
   users: Object;
 
   constructor(private data: DataService, private router: Router) { }
 
   ngOnInit() {
-    var add_position = this.ELEMENT_DATA.length;
     this.findParams[0].email = localStorage.getItem('email');
     this.findParams[0].password = localStorage.getItem('password');
 
@@ -57,35 +54,29 @@ export class HomeComponent implements OnInit {
       }
      
     };
-    var results = this.ELEMENT_DATA;
+
     var findCheker = this.data.getResults(this.findParams[0].email);
-    console.log('yes');
-    findCheker.onreadystatechange = function() {
+    findCheker.onreadystatechange = (responce) => {
 
       //Check if responce status is 200
-      if (this.readyState == 4 && this.status == 200) {
-          
+      if (responce.type === "readystatechange") {
+      
         //Get a result about user
         var rows = JSON.parse(findCheker.response);
-        console.log(rows);
         
         for (var row = 0; row < rows.result.length; row++){
           var add_contact_data = rows.result[row].contact_data;
           var add_result = rows.result[row].result;
           var add_test_code = rows.result[row].test_code;
-          results.push({position: add_position, contact: add_contact_data, code: add_test_code, result: add_result});
+          if (this.ELEMENT_DATA.length < rows.result.length){
+            this.ELEMENT_DATA.push({position: row + 1, contact: add_contact_data, code: add_test_code, result: add_result});
+          }
         }
+
       }
      
     };
-    /**
-    for (var row = 0; row < results.length; row++){
-      var add_contact_data = results[row].contact;
-      var add_result = results[row].result;
-      var add_test_code = results[row].code;
-      this.ELEMENT_DATA.push({position: add_position, contact: add_contact_data, code: add_test_code, result: add_result});
-    }
-     */
+   
   }
 
 }

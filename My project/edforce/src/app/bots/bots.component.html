@@ -1,6 +1,6 @@
 
 <div class="telegram-bot">
-    <h4>Create your own test: </h4>
+    
        <div class="question-form">
 
             <mat-card class="question-item" style="min-height: 120px" *ngFor="let question of questions">
@@ -13,7 +13,7 @@
                     <div class="question-item-label"><b>Answers:</b> {{ question.answers }}</div>
            
 
-                    <div class="question-item-label"><b>Main answer:</b> {{ question.answer }}</div>
+                    <div class="question-item-label"><b>Right answer:</b> {{ question.answer }}</div>
                 
                 </div>
 
@@ -23,7 +23,7 @@
 
             </mat-card>
 
-            <mat-card class="actions" style="min-height: 260px">
+            <mat-card class="actions" style="min-height: 260px; background-color: #FAFAF2;">
                 <mat-form-field class="question-input" (keyup.enter)="addQuestion()">
                     <input matInput placeholder="Question.." [(ngModel)]="questionAsk">
                 </mat-form-field><br>
@@ -31,7 +31,7 @@
                     <input matInput placeholder="Anser 1, answer 2.." [(ngModel)]="questionAnswers">
                 </mat-form-field><br>
                 <mat-form-field class="answer-input" (keyup.enter)="addQuestion()">
-                    <input matInput placeholder="Main answer" [(ngModel)]="questionAnswer">
+                    <input matInput placeholder="Right answer" [(ngModel)]="questionAnswer">
                 </mat-form-field><br>
                 <button mat-mini-fab color="primary" style="font-size: 26px" class="btn-add-new-question" (click)="addQuestion()">+</button>
             </mat-card>
