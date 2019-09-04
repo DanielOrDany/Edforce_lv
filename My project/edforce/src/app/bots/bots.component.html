@@ -1,0 +1,48 @@
+
+<div class="telegram-bot">
+    <h4>Create your own test: </h4>
+       <div class="question-form">
+
+            <mat-card class="question-item" style="min-height: 120px" *ngFor="let question of questions">
+
+                <div class="question-item-left">
+
+                    <div class="question-item-label"><b>Question:</b> {{ question.ask }}</div>
+
+
+                    <div class="question-item-label"><b>Answers:</b> {{ question.answers }}</div>
+           
+
+                    <div class="question-item-label"><b>Main answer:</b> {{ question.answer }}</div>
+                
+                </div>
+
+                <div class="remove-item" (click)="deleteQuestion(question.id)">
+                    &times;
+                </div>
+
+            </mat-card>
+
+            <mat-card class="actions" style="min-height: 260px">
+                <mat-form-field class="question-input" (keyup.enter)="addQuestion()">
+                    <input matInput placeholder="Question.." [(ngModel)]="questionAsk">
+                </mat-form-field><br>
+                <mat-form-field class="answers-input" (keyup.enter)="addQuestion()">
+                    <input matInput placeholder="Anser 1, answer 2.." [(ngModel)]="questionAnswers">
+                </mat-form-field><br>
+                <mat-form-field class="answer-input" (keyup.enter)="addQuestion()">
+                    <input matInput placeholder="Main answer" [(ngModel)]="questionAnswer">
+                </mat-form-field><br>
+                <button mat-mini-fab color="primary" style="font-size: 26px" class="btn-add-new-question" (click)="addQuestion()">+</button>
+            </mat-card>
+
+            <div class="save-actions">
+                <mat-form-field class="school-code-input">
+                    <input matInput placeholder="Test code" [(ngModel)]="testCode">
+                </mat-form-field><br>
+                <button class="btn-add-new-save" mat-flat-button color="primary" (click)="saveAllQuestions()">Save all</button>
+            </div>
+
+        </div>        
+                       
+</div>

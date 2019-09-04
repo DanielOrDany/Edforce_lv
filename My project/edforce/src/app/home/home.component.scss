@@ -1,0 +1,47 @@
+ul {
+    list-style-type: none;
+    margin: 0;padding: 0;
+
+    li {
+        background: rgb(238, 238, 238);
+        padding: 2em;
+        border-radius: 4px;
+        margin-bottom: 7px;
+        display: grid;
+        grid-template-columns: 60px auto;
+
+        p {
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 100%;
+        }
+    }
+}
+
+table {
+    width: 100%;
+}
+
+.position{
+    position: relative;
+    margin-left: 15px;
+}
+
+.contact{
+    position: relative;
+    margin-left: 100px;
+}
+
+.code{
+    position: relative;
+    margin-left: 200px;
+}
+
+.result{
+    position: relative;
+    margin-left: 300px;
+}
